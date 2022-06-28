@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fotg/model/state.dart';
 
 import '../providers.dart';
 import '../widgets/states/state_list.dart';
@@ -13,7 +14,13 @@ class StateSelectionScreen extends ConsumerWidget {
     return Scaffold(
       body: Container(
         child: (!loading)
-            ? StateList(states: states)
+            ? StateList(
+                states: states,
+                onSelectState: (StateModel state) {
+                  ref.read(stateProvider).selectState(state);
+                  // Navigate somewhere
+                },
+              )
             : const CircularProgressIndicator(),
       ),
     );

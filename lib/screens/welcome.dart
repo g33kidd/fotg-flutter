@@ -40,8 +40,10 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, '/stateSelection'),
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  '/stateSelection',
+                ), //pushReplacementNamed?
                 child: Text("Select your State"),
               ),
             ],
