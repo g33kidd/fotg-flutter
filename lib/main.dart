@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fotg/screens/search.dart';
 
 import 'screens/state_selection.dart';
 import 'screens/welcome.dart';
@@ -18,6 +19,7 @@ class FOTGApp extends StatelessWidget {
       home: WelcomeScreen(),
       routes: {
         '/stateSelection': (_) => StateSelectionScreen(),
+        '/search': (_) => SearchScreen(),
       },
     );
   }

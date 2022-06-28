@@ -18,6 +18,8 @@ class StateSelectionScreen extends ConsumerWidget {
                 states: states,
                 onSelectState: (StateModel state) {
                   ref.read(stateProvider).selectState(state);
+                  Navigator.pushNamed(context, '/search');
+                  print(state.stateName);
                   // Navigate somewhere
                 },
               )
