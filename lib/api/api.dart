@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_logging_interceptor/dio_logging_interceptor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fotg/model/state.dart';
+import 'package:fotg/model/static_data.dart';
 
 import 'response.dart';
 
@@ -37,7 +38,6 @@ class API {
     }
   }
 
-  // Get States
   Future<List<StateModel>> getStates() async {
     APIResponse response = await get("state");
     List<StateModel> statesList = [];
@@ -48,5 +48,27 @@ class API {
     }
 
     return statesList;
+  }
+
+  Future<StaticDataModel> getStaticData() async {
+    APIResponse response = await get("healthCheck/getstaticdata");
+    if (response.success) {
+      Map<String, dynamic> data = response.result;
+      return StaticDataModel(
+        apiVersion: data['version'],
+        documentTypes: [], // build list
+        helpDeskContact: data['helpDeskContact'],
+        pageSize: data['pageSize'],
+        sectionNumberInArabicFormat: data['sectionNumberInArabicFormat'],
+      );
+    } else {
+      return StaticDataModel(
+        apiVersion: "",
+        documentTypes: [], // build list
+        helpDeskContact: "",
+        pageSize: 25,
+        sectionNumberInArabicFormat: false,
+      );
+    }
   }
 }

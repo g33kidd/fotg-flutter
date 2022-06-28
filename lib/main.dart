@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fotg/pages/home.dart';
 
-import 'pages/loader.dart';
+import 'screens/home.dart';
+import 'screens/loader.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

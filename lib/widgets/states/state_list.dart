@@ -12,7 +12,9 @@ class StateList extends StatelessWidget {
       itemCount: states.length,
       itemBuilder: (ctx, i) {
         final state = states[i];
-        return Text(state.stateName);
+        return Text(
+          "${state.stateName} (${state.stateCode}) - ${state.stateAbbreviation}",
+        );
       },
     );
   }
