@@ -12,15 +12,8 @@ class StateListProvider extends ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    final states = await API().getStates();
-    addAll(states);
-
+    states = await API().getStates();
     loading = false;
-    notifyListeners();
-  }
-
-  void addAll(List<StateModel> stateList) {
-    states.addAll(stateList);
     notifyListeners();
   }
 
