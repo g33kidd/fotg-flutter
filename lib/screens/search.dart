@@ -6,11 +6,14 @@ import 'package:fotg/providers.dart';
 import 'package:fotg/widgets/search/search_box.dart';
 import 'package:fotg/widgets/states/state_selection_dropdown.dart';
 
+import '../widgets/search/display_results.dart';
 import '../widgets/shared/no_results.dart';
 
 class SearchScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final search = ref.watch(searchProvider);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: NrcsBlue,
@@ -21,7 +24,7 @@ class SearchScreen extends ConsumerWidget {
         title: Text("Search widget should go here"),
         leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
       ),
-      body: NoResults(),
+      body: DisplayResults(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: NrcsBlue,
         fixedColor: Colors.white,
