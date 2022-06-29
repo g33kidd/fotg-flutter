@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fotg/constants.dart';
 
 class DocumentPubDate extends StatelessWidget {
-  final String displayDate;
+  final String date;
 
-  const DocumentPubDate({Key? key, required this.displayDate})
-      : super(key: key);
+  const DocumentPubDate({Key? key, required this.date}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class DocumentPubDate extends StatelessWidget {
           width: 5,
         ),
         Text(
-          displayDate,
+          date.substring(0, 10),
           style: TextStyle(color: Colors.grey[900], fontSize: 12),
         )
       ],

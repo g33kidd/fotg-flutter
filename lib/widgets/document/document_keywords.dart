@@ -20,9 +20,13 @@ class DocumentKeywords extends StatelessWidget {
         const SizedBox(
           width: 5,
         ),
-        Text(
-          keywords,
-          style: TextStyle(color: Colors.grey[900], fontSize: 12),
+        Flexible(
+          child: Text(
+            keywords,
+            style: TextStyle(color: Colors.grey[900], fontSize: 12),
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+          ),
         )
       ],
     );

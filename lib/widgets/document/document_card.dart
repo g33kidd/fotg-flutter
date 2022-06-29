@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fotg/constants.dart';
+import 'package:fotg/model/resource_item.dart';
 import 'package:fotg/widgets/document/document_author.dart';
 import 'package:fotg/widgets/document/document_keywords.dart';
 import 'package:fotg/widgets/document/document_path.dart';
@@ -8,54 +9,54 @@ import 'package:fotg/widgets/document/document_title.dart';
 import 'package:fotg/widgets/document/document_type.dart';
 
 class DocumentCard extends StatelessWidget {
-  const DocumentCard({Key? key}) : super(key: key);
+  final ResourceItem resourceItem;
+
+  const DocumentCard({Key? key, required this.resourceItem}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
         color: Colors.white,
-        margin: const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 0),
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
             debugPrint("Card tapped");
           },
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(12, 12, 12, 10),
+            padding: const EdgeInsets.fromLTRB(12, 12, 12, 6),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const DocumentPath(
-                  path:
-                      "Section 3 > ... > Conservation Activity Plas (CAP) Technical Criteria",
+                DocumentPath(
+                  path: resourceItem.documentPath ?? "N/A",
                 ),
                 const SizedBox(
-                  height: 6.0,
+                  height: 8.0,
                 ),
-                const DocumentTitle(
-                  title: "Drainage_Water_Management_Plan - Code",
+                DocumentTitle(
+                  title: resourceItem.resourceTitle ?? "N/A",
                 ),
                 const SizedBox(
                   height: 10.0,
                 ),
                 Row(
-                  children: const <Widget>[
+                  children: <Widget>[
                     DocumentPubDate(
-                      displayDate: "2022-06-22",
+                      date: resourceItem.resourceRevisionDate ?? "N/A",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
-                    DocumentAuthor(
-                      author: "Perry Oakes",
+                    const DocumentAuthor(
+                      author: "USDA",
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 6.0,
                 ),
-                const DocumentKeywords(
-                  keywords: "water, soil",
+                DocumentKeywords(
+                  keywords: resourceItem.keywords ?? "N/A",
                 ),
                 const SizedBox(
                   height: 6.0,
@@ -63,8 +64,8 @@ class DocumentCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     DocumentType(
-                      type: "PDF",
-                    ),
+                        type: resourceItem.resourceMimeType?.mimeTypeName ??
+                            "--"),
                     Spacer(),
                     IconButton(
                       onPressed: () {},
