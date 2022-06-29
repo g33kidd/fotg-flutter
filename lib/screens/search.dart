@@ -18,7 +18,7 @@ class SearchScreen extends ConsumerWidget {
         actions: [
           StateSelectionDropdown(),
         ],
-        title: SearchBox(),
+        title: Text("Search widget should go here"),
         leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
       ),
       body: NoResults(),
