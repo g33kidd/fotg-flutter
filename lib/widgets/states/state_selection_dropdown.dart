@@ -15,6 +15,7 @@ class StateSelectionDropdown extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = ref.watch(stateProvider);
+    final search = ref.watch(searchProvider);
 
     List<DropdownMenuItem<StateModel>> dropdownValues =
         provider.states.map<DropdownMenuItem<StateModel>>((s) {
@@ -34,7 +35,14 @@ class StateSelectionDropdown extends ConsumerWidget {
       child: DropdownButton<StateModel>(
         value: provider.selected,
         underline: Container(),
-        onChanged: (s) => provider.selectState(s),
+        onChanged: (s) {
+          if (s != null) {
+            provider.selectState(s);
+
+            // can be moved to search component
+            search.search("water", s.stateCode);
+          }
+        },
         items: dropdownValues,
       ),
     );

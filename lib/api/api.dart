@@ -100,9 +100,9 @@ class API {
     List<ResourceItem> resourceItems = [];
 
     if (response.success) {
-      List<Map<String, dynamic>> results = response.result;
-      resourceItems =
-          results.map<ResourceItem>((e) => ResourceItem.fromJson(e)).toList();
+      resourceItems = response.result['resourceItems']
+          .map<ResourceItem>((e) => ResourceItem.fromJson(e))
+          .toList();
     }
 
     return resourceItems;
