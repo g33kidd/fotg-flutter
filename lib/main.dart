@@ -12,6 +12,8 @@ void main() {
 // TODO create a Widget that initializes most required app data on load.
 //      replacing the WelcomeScreen
 class FOTGApp extends StatelessWidget {
+  const FOTGApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
