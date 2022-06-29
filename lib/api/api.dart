@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_logging_interceptor/dio_logging_interceptor.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:fotg/model/resource_item.dart';
 import 'package:fotg/model/state.dart';
 import 'package:fotg/model/static_data.dart';
 
@@ -25,6 +26,21 @@ class API {
 
   Future<APIResponse> get(endpoint) async {
     Response response = await dio.get(endpoint);
+    if (response.statusCode == 200) {
+      return APIResponse.fromJson(response.data);
+    } else {
+      return APIResponse(
+        code: response.statusCode,
+        message: "Invalid API Response",
+        result: {},
+        success: false,
+        token: null,
+      );
+    }
+  }
+
+  Future<APIResponse> post(String endpoint, Map<String, dynamic> data) async {
+    Response response = await dio.post(endpoint, data: data);
     if (response.statusCode == 200) {
       return APIResponse.fromJson(response.data);
     } else {
@@ -70,5 +86,25 @@ class API {
         sectionNumberInArabicFormat: false,
       );
     }
+  }
+
+  Future<List<ResourceItem>> search(String criteria, String stateCode) async {
+    APIResponse response = await post(
+      "resourceItem/listBySearchCriteriaAll",
+      {
+        "searchCriteria": criteria,
+        "stateCode": stateCode,
+      },
+    );
+
+    List<ResourceItem> resourceItems = [];
+
+    if (response.success) {
+      resourceItems = response.result['resourceItems']
+          .map<ResourceItem>((e) => ResourceItem.fromJson(e))
+          .toList();
+    }
+
+    return resourceItems;
   }
 }
