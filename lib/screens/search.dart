@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fotg/constants.dart';
 import 'package:fotg/model/state.dart';
 import 'package:fotg/providers.dart';
+import 'package:fotg/widgets/document/document_card.dart';
 import 'package:fotg/widgets/search/search_box.dart';
 import 'package:fotg/widgets/states/state_selection_dropdown.dart';
 
@@ -21,7 +22,9 @@ class SearchScreen extends ConsumerWidget {
         title: Text("Search widget should go here"),
         leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
       ),
-      body: const Card(),
+      body: Column(
+        children: [const DocumentCard()],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: NrcsBlue,
         fixedColor: Colors.white,
