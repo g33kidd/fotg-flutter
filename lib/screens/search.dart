@@ -21,13 +21,13 @@ class SearchScreen extends ConsumerWidget {
         title: Text("Search widget should go here"),
         leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
       ),
-      body: NoResults(),
+      body: const Card(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: NrcsBlue,
         fixedColor: Colors.white,
         unselectedItemColor: Colors.white.withAlpha(100),
         // TODO hook this up to navigation.
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: "Search",
