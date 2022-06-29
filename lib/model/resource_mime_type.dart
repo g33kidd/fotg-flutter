@@ -12,10 +12,10 @@ class ResourceMimeType {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mimeTypeId'] = this.mimeTypeId;
-    data['mimeTypeName'] = this.mimeTypeName;
-    data['mimeTypeClassId'] = this.mimeTypeClassId;
+    final Map<String, dynamic> data = {};
+    data['mimeTypeId'] = mimeTypeId;
+    data['mimeTypeName'] = mimeTypeName;
+    data['mimeTypeClassId'] = mimeTypeClassId;
     return data;
   }
 }

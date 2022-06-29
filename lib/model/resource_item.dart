@@ -29,33 +29,34 @@ class ResourceItem {
   int? sectionNumber;
   int? folderId;
 
-  ResourceItem(
-      {this.resourceId,
-      this.keywords,
-      this.resourceTitle,
-      this.resourceRevisionDate,
-      this.resourceEndDate,
-      this.documentPath,
-      this.abstract,
-      this.fileSizeInKb,
-      this.stgcReviewDate,
-      this.publicInd,
-      this.displayInd,
-      this.subjectString,
-      this.subjects,
-      this.isDocument,
-      this.documentUrl,
-      this.fileName,
-      this.resourceUrl,
-      this.resourceMimeType,
-      this.lastChangeDate,
-      this.lastChangeUserName,
-      this.isNRTVersion,
-      this.resourceContactId,
-      this.nrtDocumentName,
-      this.isHighlighted,
-      this.sectionNumber,
-      this.folderId});
+  ResourceItem({
+    this.resourceId,
+    this.keywords,
+    this.resourceTitle,
+    this.resourceRevisionDate,
+    this.resourceEndDate,
+    this.documentPath,
+    this.abstract,
+    this.fileSizeInKb,
+    this.stgcReviewDate,
+    this.publicInd,
+    this.displayInd,
+    this.subjectString,
+    this.subjects,
+    this.isDocument,
+    this.documentUrl,
+    this.fileName,
+    this.resourceUrl,
+    this.resourceMimeType,
+    this.lastChangeDate,
+    this.lastChangeUserName,
+    this.isNRTVersion,
+    this.resourceContactId,
+    this.nrtDocumentName,
+    this.isHighlighted,
+    this.sectionNumber,
+    this.folderId,
+  });
 
   ResourceItem.fromJson(Map<String, dynamic> json) {
     resourceId = json['resourceId'];
@@ -94,7 +95,7 @@ class ResourceItem {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = {};
     data['resourceId'] = resourceId;
     data['keywords'] = keywords;
     data['resourceTitle'] = resourceTitle;

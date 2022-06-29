@@ -22,12 +22,12 @@ class Subject {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['stateSubjectId'] = this.stateSubjectId;
-    data['stateCode'] = this.stateCode;
-    data['subjectTitle'] = this.subjectTitle;
-    data['subjectDesc'] = this.subjectDesc;
-    data['hasResourceItems'] = this.hasResourceItems;
+    final Map<String, dynamic> data = {};
+    data['stateSubjectId'] = stateSubjectId;
+    data['stateCode'] = stateCode;
+    data['subjectTitle'] = subjectTitle;
+    data['subjectDesc'] = subjectDesc;
+    data['hasResourceItems'] = hasResourceItems;
     return data;
   }
 }
