@@ -8,13 +8,13 @@ class NoResults extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset("assets/NRCS-WaterdropRoundLogo.png", height: 75),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             "NRCS Field Office Technical Guide",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             "Use the search bar at the top to search documents.",
             style: TextStyle(color: Colors.black.withAlpha(150)),

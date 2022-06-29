@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers.dart';
 
 class WelcomeScreen extends ConsumerStatefulWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
+
   @override
   ConsumerState<WelcomeScreen> createState() => _WelcomeScreenState();
 }
@@ -12,11 +14,12 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) => startup());
+    Future.delayed(Duration.zero, () => startup());
   }
 
   void startup() async {
     await ref.watch(stateProvider).init();
+    Navigator.pushReplacementNamed(context, '/search');
   }
 
   @override
@@ -38,14 +41,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                 style: TextStyle(
                   fontSize: 18,
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  '/stateSelection',
-                ), //pushReplacementNamed?
-                child: Text("Select your State"),
-              ),
+              )
             ],
           ),
         ),
