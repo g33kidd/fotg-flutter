@@ -8,6 +8,7 @@ import 'package:fotg/widgets/states/state_selection_dropdown.dart';
 
 import '../widgets/search/display_results.dart';
 import '../widgets/shared/no_results.dart';
+import "../widgets/search/search_box.dart";
 
 class SearchScreen extends ConsumerWidget {
   @override
@@ -21,7 +22,7 @@ class SearchScreen extends ConsumerWidget {
         actions: [
           StateSelectionDropdown(),
         ],
-        title: Text("Search widget should go here"),
+        title: SearchBox(),
         leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
       ),
       body: DisplayResults(),
