@@ -34,7 +34,7 @@ class StateSelectionDropdown extends ConsumerWidget {
     List<Map<String, dynamic>> dropdownList =
         provider.states.map<Map<String, dynamic>>((state) {
       return {
-        'label': state.stateName,
+        'label': "${state.stateAbbreviation} - ${state.stateName}",
         'value': state,
       };
     }).toList();
