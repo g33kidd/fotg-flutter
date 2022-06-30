@@ -1,32 +1,88 @@
+import 'package:hive_flutter/adapters.dart';
+
 import 'resource_mime_type.dart';
 import 'subject.dart';
 
+part 'resource_item.g.dart';
+
+@HiveType(typeId: 1)
 class ResourceItem {
+  @HiveField(0)
   int? resourceId;
+
+  @HiveField(1)
   String? keywords;
+
+  @HiveField(2)
   String? resourceTitle;
+
+  @HiveField(3)
   String? resourceRevisionDate;
+
+  @HiveField(4)
   String? resourceEndDate;
+
+  @HiveField(5)
   String? documentPath;
+
+  @HiveField(6)
   String? abstract;
+
+  @HiveField(7)
   int? fileSizeInKb;
+
+  @HiveField(8)
   String? stgcReviewDate;
+
+  @HiveField(9)
   bool? publicInd;
+
+  @HiveField(10)
   bool? displayInd;
+
+  @HiveField(11)
   String? subjectString;
+
+  @HiveField(12)
   List<Subject>? subjects;
+
+  @HiveField(13)
   bool? isDocument;
+
+  @HiveField(14)
   String? documentUrl;
+
+  @HiveField(15)
   String? fileName;
+
+  @HiveField(16)
   String? resourceUrl;
+
+  @HiveField(17)
   ResourceMimeType? resourceMimeType;
+
+  @HiveField(18)
   String? lastChangeDate;
+
+  @HiveField(19)
   String? lastChangeUserName;
+
+  @HiveField(20)
   bool? isNRTVersion;
+
+  @HiveField(21)
   int? resourceContactId;
+
+  @HiveField(22)
   String? nrtDocumentName;
+
+  @HiveField(23)
   bool? isHighlighted;
+
+  @HiveField(24)
   int? sectionNumber;
+
+  @HiveField(25)
   int? folderId;
 
   ResourceItem({

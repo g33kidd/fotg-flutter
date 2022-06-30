@@ -1,8 +1,18 @@
+import 'package:hive_flutter/adapters.dart';
+
+part 'subject.g.dart';
+
+@HiveType(typeId: 3)
 class Subject {
+  @HiveField(0)
   int? stateSubjectId;
+  @HiveField(1)
   String? stateCode;
+  @HiveField(2)
   String? subjectTitle;
+  @HiveField(3)
   String? subjectDesc;
+  @HiveField(4)
   bool? hasResourceItems;
 
   Subject({

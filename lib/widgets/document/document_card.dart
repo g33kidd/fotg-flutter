@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fotg/constants.dart';
 import 'package:fotg/model/resource_item.dart';
+import 'package:fotg/providers.dart';
 import 'package:fotg/widgets/document/document_author.dart';
 import 'package:fotg/widgets/document/document_keywords.dart';
 import 'package:fotg/widgets/document/document_path.dart';
@@ -8,13 +10,33 @@ import 'package:fotg/widgets/document/document_pub_date.dart';
 import 'package:fotg/widgets/document/document_title.dart';
 import 'package:fotg/widgets/document/document_type.dart';
 
-class DocumentCard extends StatelessWidget {
-  final ResourceItem resourceItem;
+extension FirstWhereOrNullExtension<E> on Iterable<E> {
+  E? firstWhereOrNull(bool Function(E) test) {
+    for (E element in this) {
+      if (test(element)) return element;
+    }
+    return null;
+  }
+}
 
-  const DocumentCard({Key? key, required this.resourceItem}) : super(key: key);
+class DocumentCard extends ConsumerWidget {
+  final ResourceItem resourceItem;
+  final bool bookmarked;
+
+  const DocumentCard({
+    Key? key,
+    required this.resourceItem,
+    this.bookmarked = false,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final hasMarked = ref
+        .watch(bookmarkProvider)
+        .bookmarks
+        .firstWhereOrNull((i) => i.resourceId == resourceItem.resourceId);
+
+    final isMarked = hasMarked != null;
     return Card(
         color: Colors.white,
         child: InkWell(
@@ -62,9 +84,17 @@ class DocumentCard extends StatelessWidget {
                                       "--"),
                           Spacer(),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (bookmarked) {
+                                ref.watch(bookmarkProvider).del(resourceItem);
+                              } else {
+                                ref.watch(bookmarkProvider).add(resourceItem);
+                              }
+                            },
                             icon: Icon(
-                              Icons.bookmark_add_outlined,
+                              isMarked
+                                  ? Icons.bookmark_added
+                                  : Icons.bookmark_add_outlined,
                               color: NrcsBlue,
                               size: 20,
                             ),

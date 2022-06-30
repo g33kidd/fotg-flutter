@@ -33,10 +33,8 @@ class StateSelectionDropdown extends ConsumerWidget {
 
     List<Map<String, dynamic>> dropdownList =
         provider.states.map<Map<String, dynamic>>((state) {
-      final label = abbreviated ? state.stateAbbreviation : state.stateName;
-
       return {
-        'label': label,
+        'label': state.stateName,
         'value': state,
       };
     }).toList();
@@ -53,7 +51,8 @@ class StateSelectionDropdown extends ConsumerWidget {
       dropdownHeight: 300,
       dropdownPadding: const EdgeInsets.all(0),
       dropdownAlign: 'center',
-      resultTS: const TextStyle(fontSize: 16, color: Colors.black),
+      dropdownWidth: 400,
+      resultTS: const TextStyle(fontSize: 14, color: Colors.black),
       resultAlign: Alignment.center,
       placeholderTS: const TextStyle(fontSize: 16, color: Colors.black),
       selectedItemTS: const TextStyle(fontSize: 16, color: NrcsBlue),
