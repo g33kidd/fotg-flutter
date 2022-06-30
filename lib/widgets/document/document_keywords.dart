@@ -18,7 +18,7 @@ class DocumentKeywords extends StatelessWidget {
           color: NrcsBlue,
         ),
         const SizedBox(
-          width: 5,
+          width: 4,
         ),
         Flexible(
           child: Text(

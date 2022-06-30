@@ -12,7 +12,7 @@ class DisplayResults extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final search = ref.watch(searchProvider);
     return Container(
-      padding: EdgeInsets.fromLTRB(3, 0, 3, 0),
+      padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
       color: Colors.grey[300],
       child: ListView.builder(
         itemCount: search.resourceItems.length,

@@ -45,7 +45,7 @@ class DocumentCard extends StatelessWidget {
                       date: resourceItem.resourceRevisionDate ?? "N/A",
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 16,
                     ),
                     const DocumentAuthor(
                       author: "USDA",
@@ -53,7 +53,7 @@ class DocumentCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 6.0,
+                  height: 8.0,
                 ),
                 DocumentKeywords(
                   keywords: resourceItem.keywords ?? "N/A",
