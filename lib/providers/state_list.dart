@@ -14,6 +14,9 @@ class StateListProvider extends ChangeNotifier {
 
     states = await API().getStates();
     loading = false;
+    if (states.isNotEmpty) {
+      selected = states.first;
+    }
     notifyListeners();
   }
 
