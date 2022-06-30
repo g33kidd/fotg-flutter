@@ -22,31 +22,23 @@ class AppScaffold extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selected = ref.watch(stateProvider).selected;
-
-    final actions = displaySearch
-        ? (selected != null)
-            ? const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: StateSelectionDropdown(abbreviated: true),
-                ),
-              ]
-            : null
-        : null;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: NrcsBlue,
         elevation: 0,
         titleSpacing: 0,
-        actions: actions,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 10, 8, 9.5),
+            child: StateSelectionDropdown(abbreviated: true),
+          ),
+        ],
         title: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(4, 0, 8, 0),
           child: displaySearch ? SearchBox() : Text(screenTitle ?? "NRCS FOTG"),
         ),
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
           child: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
         ),
       ),

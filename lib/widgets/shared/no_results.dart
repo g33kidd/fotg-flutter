@@ -1,32 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:fotg/widgets/states/state_selection_dropdown.dart';
+import 'package:fotg/constants.dart';
 
 class NoResults extends StatelessWidget {
-  final bool selectState;
-
-  const NoResults({Key? key, this.selectState = false}) : super(key: key);
+  const NoResults({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset("assets/NRCS-WaterdropRoundLogo.png", height: 75),
-          const SizedBox(height: 20),
-          const Text(
-            "NRCS Field Office Technical Guide",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
-          ),
-          const SizedBox(height: 20),
-          if (!selectState)
-            Text(
-              "Use the search bar at the top to search documents.",
-              style: TextStyle(color: Colors.black.withAlpha(150)),
+    return Container(
+      color: Colors.grey[300],
+      child: Padding(
+        padding: const EdgeInsets.all(25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/NRCS-WaterdropRoundLogo.png",
+              height: 65,
             ),
-          if (selectState) const StateSelectionDropdown(abbreviated: false),
-        ],
+            const SizedBox(height: 20),
+            const Text(
+              "NRCS",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.w700, color: NrcsBlue),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              "Field Office Technical Guide",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey[900]),
+            ),
+            const SizedBox(height: 25),
+            Text(
+              "Use the search bar to find technical guides by state",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey[800]),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }

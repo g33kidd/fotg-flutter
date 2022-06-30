@@ -31,7 +31,7 @@ class SearchScreen extends ConsumerWidget {
                   ? const Center(child: CircularProgressIndicator())
                   : const DisplayResults())
               : const NoResults())
-          : const NoResults(selectState: true),
+          : const NoResults(),
     );
   }
 }
