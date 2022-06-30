@@ -53,7 +53,7 @@ class StateSelectionDropdown extends ConsumerWidget {
       dropdownHeight: 300,
       dropdownPadding: const EdgeInsets.all(0),
       dropdownAlign: 'center',
-      resultTS: const TextStyle(fontSize: 14, color: Colors.black),
+      resultTS: const TextStyle(fontSize: 16, color: Colors.black),
       resultAlign: Alignment.center,
       placeholderTS: const TextStyle(fontSize: 16, color: Colors.black),
       selectedItemTS: const TextStyle(fontSize: 16, color: NrcsBlue),

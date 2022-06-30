@@ -31,13 +31,13 @@ class SearchScreen extends ConsumerWidget {
         actions: (states.selected != null)
             ? const [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.fromLTRB(2, 10, 6, 9.5),
                   child: StateSelectionDropdown(abbreviated: true),
                 ),
               ]
             : null,
         title: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(2, 0, 6, 0),
           child: SearchBox(),
         ),
         leading: Padding(

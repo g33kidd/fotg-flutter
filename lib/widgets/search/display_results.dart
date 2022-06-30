@@ -12,7 +12,6 @@ class DisplayResults extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final search = ref.watch(searchProvider);
     return Container(
-      padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
       color: Colors.grey[300],
       child: ListView.builder(
         itemCount: search.resourceItems.length,
@@ -20,6 +19,7 @@ class DisplayResults extends ConsumerWidget {
           ResourceItem item = search.resourceItems[index];
           return DocumentCard(resourceItem: item);
         },
+        padding: const EdgeInsets.fromLTRB(3, 3, 3, 3),
       ),
     );
   }
