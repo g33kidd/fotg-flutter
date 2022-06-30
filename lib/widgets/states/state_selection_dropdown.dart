@@ -30,20 +30,24 @@ class StateSelectionDropdown extends ConsumerWidget {
     }).toList();
 
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.all(12),
-      child: DropdownButton<StateModel>(
-        value: provider.selected,
-        underline: Container(),
-        onChanged: (s) {
-          if (s != null) {
-            provider.selectState(s);
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+        child: DropdownButton<StateModel>(
+          value: provider.selected,
+          underline: Container(),
+          onChanged: (s) {
+            if (s != null) {
+              provider.selectState(s);
 
-            // can be moved to search component
-            search.search("water", s.stateCode);
-          }
-        },
-        items: dropdownValues,
+              // can be moved to search component
+              search.search("water", s.stateCode);
+            }
+          },
+          items: dropdownValues,
+          borderRadius: BorderRadius.circular(5),
+        ),
       ),
     );
   }

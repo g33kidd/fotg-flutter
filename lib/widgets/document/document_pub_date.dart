@@ -18,7 +18,7 @@ class DocumentPubDate extends StatelessWidget {
           color: NrcsBlue,
         ),
         const SizedBox(
-          width: 5,
+          width: 4,
         ),
         Text(
           date.substring(0, 10),

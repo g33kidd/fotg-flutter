@@ -24,7 +24,13 @@ class SearchScreen extends ConsumerWidget {
           StateSelectionDropdown(),
         ],
         title: SearchBox(),
-        leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
+        leading: Padding(
+          padding: EdgeInsets.fromLTRB(10, 8, 0, 8),
+          child: Image.asset(
+            "assets/NRCS-WaterdropRoundLogo.png",
+          ),
+        ),
+        titleSpacing: 6,
       ),
       body: DisplayResults(),
       bottomNavigationBar: BottomNavigationBar(
