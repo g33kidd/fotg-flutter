@@ -19,7 +19,7 @@ class DocumentType extends StatelessWidget {
         style: const TextStyle(fontSize: 10, color: Colors.white),
       ),
       backgroundColor: NrcsBlue,
-      visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+      visualDensity: const VisualDensity(horizontal: -2, vertical: -4),
     );
   }
 }

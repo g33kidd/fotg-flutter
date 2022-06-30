@@ -18,7 +18,7 @@ class DocumentAuthor extends StatelessWidget {
           color: NrcsBlue,
         ),
         const SizedBox(
-          width: 5,
+          width: 4,
         ),
         Text(
           author,
