@@ -15,18 +15,43 @@ class SearchScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final search = ref.watch(searchProvider);
+    final states = ref.watch(stateProvider);
+
+    final hasResults = search.resourceItems.isNotEmpty;
+    final notSearched = search.resourceItems.isEmpty;
+    final loading = search.loading;
+
+    debugPrint(loading.toString());
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: NrcsBlue,
         elevation: 0,
-        actions: [
-          StateSelectionDropdown(),
-        ],
-        title: SearchBox(),
-        leading: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
+        titleSpacing: 0,
+        actions: (states.selected != null)
+            ? const [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: StateSelectionDropdown(abbreviated: true),
+                ),
+              ]
+            : null,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SearchBox(),
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
+        ),
       ),
-      body: DisplayResults(),
+      body: states.selected != null
+          ? (hasResults
+              ? (loading
+                  ? const Center(child: CircularProgressIndicator())
+                  : const DisplayResults())
+              : const NoResults())
+          : const NoResults(selectState: true),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: NrcsBlue,
         fixedColor: Colors.white,

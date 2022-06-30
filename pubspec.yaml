@@ -38,6 +38,8 @@ dependencies:
   dio: any
   flutter_riverpod: any
   dio_logging_interceptor: ^1.0.1
+  font_awesome_flutter: 10.1.0
+  cool_dropdown: ^1.4.1
 
 dev_dependencies:
   flutter_test:

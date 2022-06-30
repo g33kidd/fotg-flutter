@@ -12,14 +12,12 @@ class DisplayResults extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final search = ref.watch(searchProvider);
     return Container(
-      padding: EdgeInsets.fromLTRB(3, 0, 3, 0),
+      padding: const EdgeInsets.fromLTRB(3, 0, 3, 0),
       color: Colors.grey[300],
       child: ListView.builder(
         itemCount: search.resourceItems.length,
         itemBuilder: (context, index) {
           ResourceItem item = search.resourceItems[index];
-          // Card component can go here.
-          // return Text(item.resourceTitle!);
           return DocumentCard(resourceItem: item);
         },
       ),
