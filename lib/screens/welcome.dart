@@ -18,6 +18,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   }
 
   void startup() async {
+    await ref.watch(bookmarkProvider).init();
     await ref.watch(stateProvider).init();
     Navigator.pushReplacementNamed(context, '/search');
   }

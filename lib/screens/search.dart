@@ -5,6 +5,7 @@ import 'package:fotg/model/state.dart';
 import 'package:fotg/providers.dart';
 import 'package:fotg/widgets/document/document_card.dart';
 import 'package:fotg/widgets/search/search_box.dart';
+import 'package:fotg/widgets/shared/app_scaffold.dart';
 import 'package:fotg/widgets/states/state_selection_dropdown.dart';
 
 import '../widgets/search/display_results.dart';
@@ -21,57 +22,66 @@ class SearchScreen extends ConsumerWidget {
     final notSearched = search.resourceItems.isEmpty;
     final loading = search.loading;
 
-    debugPrint(loading.toString());
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: NrcsBlue,
-        elevation: 0,
-        titleSpacing: 0,
-        actions: (states.selected != null)
-            ? const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: StateSelectionDropdown(abbreviated: true),
-                ),
-              ]
-            : null,
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SearchBox(),
-        ),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
-        ),
-      ),
-      body: states.selected != null
+    return AppScaffold(
+      displaySearch: true,
+      screenTitle: "Search",
+      child: states.selected != null
           ? (hasResults
               ? (loading
                   ? const Center(child: CircularProgressIndicator())
                   : const DisplayResults())
               : const NoResults())
           : const NoResults(selectState: true),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: NrcsBlue,
-        fixedColor: Colors.white,
-        unselectedItemColor: Colors.white.withAlpha(100),
-        // TODO hook this up to navigation.
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: "Bookmarks",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.download),
-            label: "Downloads",
-          ),
-        ],
-      ),
     );
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     backgroundColor: NrcsBlue,
+    //     elevation: 0,
+    //     titleSpacing: 0,
+    //     actions: (states.selected != null)
+    //         ? const [
+    //             Padding(
+    //               padding: EdgeInsets.all(8.0),
+    //               child: StateSelectionDropdown(abbreviated: true),
+    //             ),
+    //           ]
+    //         : null,
+    //     title: Padding(
+    //       padding: const EdgeInsets.all(8.0),
+    //       child: SearchBox(),
+    //     ),
+    //     leading: Padding(
+    //       padding: const EdgeInsets.all(8.0),
+    //       child: Image.asset("assets/NRCS-WaterdropRoundLogo.png"),
+    //     ),
+    //   ),
+    //   body:
+    //   bottomNavigationBar: BottomNavigationBar(
+    //     backgroundColor: NrcsBlue,
+    //     fixedColor: Colors.white,
+    //     unselectedItemColor: Colors.white.withAlpha(100),
+    //     onTap: (int page) {
+    //       if (page == 1) {
+    //         Navigator.pushNamed(context, '/bookmarks');
+    //       }
+    //     },
+    //     // TODO hook this up to navigation.
+    //     items: const [
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.search),
+    //         label: "Search",
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.bookmark),
+    //         label: "Bookmarks",
+    //       ),
+    //       BottomNavigationBarItem(
+    //         icon: Icon(Icons.download),
+    //         label: "Downloads",
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }
