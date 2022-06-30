@@ -35,6 +35,7 @@ class FOTGApp extends StatelessWidget {
         '/search': (_) => SearchScreen(),
         '/bookmarks': (_) => BookmarkScreen(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
