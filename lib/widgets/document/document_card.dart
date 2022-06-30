@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fotg/constants.dart';
@@ -9,6 +12,8 @@ import 'package:fotg/widgets/document/document_path.dart';
 import 'package:fotg/widgets/document/document_pub_date.dart';
 import 'package:fotg/widgets/document/document_title.dart';
 import 'package:fotg/widgets/document/document_type.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
 
 extension FirstWhereOrNullExtension<E> on Iterable<E> {
   E? firstWhereOrNull(bool Function(E) test) {
@@ -43,6 +48,10 @@ class DocumentCard extends ConsumerWidget {
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
             debugPrint("Card tapped");
+            debugPrint(resourceItem.documentUrl);
+            openFile(
+                url: resourceItem.documentUrl ?? "",
+                fileName: resourceItem.resourceTitle);
           },
           child: Padding(
             padding: const EdgeInsets.fromLTRB(12, 12, 12, 6),
@@ -118,5 +127,43 @@ class DocumentCard extends ConsumerWidget {
             ),
           ),
         ));
+  }
+
+  Future openFile({required String url, String? fileName}) async {
+    final file = await downloadFile(url, fileName!);
+
+    if (file == null) {
+      debugPrint("no file");
+      return;
+    }
+
+    print('Path: ${file.path}');
+    OpenFile.open(file.path);
+  }
+
+  Future<File?> downloadFile(String url, String name) async {
+    final appStorage = await getApplicationDocumentsDirectory();
+    final file = File('${appStorage.path}/$name');
+
+    try {
+      final response = await Dio().get(
+        url,
+        options: Options(
+          responseType: ResponseType.bytes,
+          followRedirects: true,
+          receiveTimeout: 0,
+        ),
+      );
+
+      debugPrint(url);
+
+      final raf = file.openSync(mode: FileMode.write);
+      raf.writeFromSync(response.data);
+      await raf.close();
+
+      return file;
+    } catch (e) {
+      return null;
+    }
   }
 }
